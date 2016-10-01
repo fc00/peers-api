@@ -25,7 +25,9 @@ module.exports = function (Config) {
         };
 
         var argv = parseReq(req);
-        console.log(argv);
+        if (Config.debug === true) {
+            console.log(argv);
+        }
 
         var apiVersion;
 
