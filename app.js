@@ -21,7 +21,11 @@ module.exports = function (Config) {
     return function (req, res) {
         var send = function (data) { asJSON(res, data); };
         var home = function () {
-            send(routes[0]);
+            send({
+                source: 'https://github.com/fc00/peers-api',
+                bugs: 'https://github.com/fc00/peers-api/issues/',
+                routes: routes[0],
+            });
         };
 
         var argv = parseReq(req);
