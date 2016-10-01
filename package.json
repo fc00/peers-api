@@ -1,0 +1,26 @@
+{
+  "name": "peers-api",
+  "version": "1.0.0",
+  "description": "find Hyperboria Peers via an http api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fc00/peers-api.git"
+  },
+  "keywords": [
+    "Hyperboria"
+  ],
+  "author": "ansuz",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fc00/peers-api/issues"
+  },
+  "homepage": "https://github.com/fc00/peers-api#readme",
+  "dependencies": {
+    "hyperboria-peers": "^1.0.5"
+  }
+}
