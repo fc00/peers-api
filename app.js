@@ -48,7 +48,9 @@ module.exports = function (Config) {
             if (args[1] && args[0] === 'location') {
                 return send({
                     result: Peers.filter(function (x, p) {
-                        return p.indexOf(args[1]) !== -1;
+                        return !args.slice(1).some(function (arg) {
+                            return p.indexOf(arg) === -1;
+                        });
                     })
                 });
             }
