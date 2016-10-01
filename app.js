@@ -13,7 +13,7 @@ var asJSON = function (res, json) {
 
 var routes = [
     [
-        '/1/location/<continent>',
+        '/1/location/<EU|NA>',
     ]
 ];
 
