@@ -1,0 +1,8 @@
+module.exports = {
+    port: 5002,
+    address: '::',
+    ready: function () {
+        console.log("Listening on port %s", module.exports.port);
+    },
+};
+
