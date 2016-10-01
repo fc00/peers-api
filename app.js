@@ -13,9 +13,15 @@ var asJSON = function (res, json) {
 
 var routes = [
     [
-        '/1/location/<EU|NA>',
+        '/1/location/<eu|na>',
     ]
 ];
+
+var lowerArray = function (A) {
+    return A.map(function (a) {
+        return a.toLowerCase();
+    });
+};
 
 module.exports = function (Config) {
     return function (req, res) {
@@ -47,10 +53,12 @@ module.exports = function (Config) {
         var handleVersion1 = function (args) {
             if (args[1] && args[0] === 'location') {
                 return send({
-                    result: Peers.filter(function (x, p) {
-                        return !args.slice(1).some(function (arg) {
-                            return p.indexOf(arg) === -1;
-                        });
+                    result: Peers.filter(function (x, P) {
+                        var p = lowerArray(P);
+                        return !lowerArray(args.slice(1))
+                            .some(function (arg) {
+                                return p.indexOf(arg.toLowerCase()) === -1;
+                            });
                     })
                 });
             }
