@@ -9,7 +9,7 @@ var parseReq = function (req) {
 };
 
 var asJSON = function (res, json) {
-    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.end(JSON.stringify(json, null, 2) + '\n');
 };
 
