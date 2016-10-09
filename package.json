@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/fc00/peers-api#readme",
   "dependencies": {
+    "ecstatic": "^2.1.0",
     "hyperboria-peers": "^1.0.5"
   }
 }

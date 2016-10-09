@@ -1,5 +1,7 @@
 var Peers = require("hyperboria-peers");
 
+var Ecstatic = require("ecstatic");
+
 var identity = function (x) { return x; };
 
 var parseReq = function (req) {
@@ -23,15 +25,27 @@ var lowerArray = function (A) {
     });
 };
 
+var Static = Ecstatic({
+    root: __dirname + '/www',
+    handleError: false
+});
+
 module.exports = function (Config) {
     return function (req, res) {
         var send = function (data) { asJSON(res, data); };
         var home = function () {
+            Static(req, res);
+            /*
             send({
                 source: 'https://github.com/fc00/peers-api',
                 bugs: 'https://github.com/fc00/peers-api/issues/',
                 routes: routes[0],
-            });
+            });*/
+        };
+
+        var four04 = function (req, res) {
+            req.url = '/404.html';
+            Static(req, res);
         };
 
         var argv = parseReq(req);
@@ -61,6 +75,8 @@ module.exports = function (Config) {
                             });
                     })
                 });
+            } else {
+                four04(req, res);
             }
         };
 
