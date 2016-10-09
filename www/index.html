@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
     <title>home</title>
 </head>
 <body>
@@ -34,8 +37,7 @@
 </ul>
 <p>Prefix your query with the API version (1) and the query type (currently, only location is supported).</p>
 <h2 id="examples">Examples</h2>
-<pre><code class="lang-Bash">
-# Find a peer in strasbourg, France, EU
+<pre><code class="lang-Bash"># Find a peer in strasbourg, France, EU
 ansuz@box:~$ curl https://peers.fc00.io/1/location/EU/fr/strasbourg
 {
   &quot;result&quot;: [
@@ -49,8 +51,8 @@ ansuz@box:~$ curl https://peers.fc00.io/1/location/EU/fr/strasbourg
     }
   ]
 }
-
-# Find a peer in new york
+</code></pre>
+<pre><code># Find a peer in new york
 ansuz@box:~$ curl https://peers.fc00.io/1/location/newyork
 {
   &quot;result&quot;: [
@@ -84,8 +86,7 @@ ansuz@box:~$ curl https://peers.fc00.io/1/location/newyork
     }
   ]
 }
-</code></pre>
-<h2 id="contributing">Contributing</h2>
+</code></pre><h2 id="contributing">Contributing</h2>
 <p>If you would like to add a peer, see <a href="https://github.com/hyperboria/peers">Hyperboria&#39;s public peer repository</a>.</p>
 <p>If you would like the source to this API, it is available <a href="https://github.com/fc00/peers-api">here</a>.</p>
 <p>If you find a bug, please report it on <a href="https://github.com/fc00/peers-api/issues">the github issue tracker</a>.</p>

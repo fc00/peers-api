@@ -27,7 +27,6 @@ Prefix your query with the API version (1) and the query type (currently, only l
 ## Examples
 
 ```Bash
-
 # Find a peer in strasbourg, France, EU
 ansuz@box:~$ curl https://peers.fc00.io/1/location/EU/fr/strasbourg
 {
@@ -43,6 +42,9 @@ ansuz@box:~$ curl https://peers.fc00.io/1/location/EU/fr/strasbourg
   ]
 }
 
+```
+
+```
 # Find a peer in new york
 ansuz@box:~$ curl https://peers.fc00.io/1/location/newyork
 {
@@ -77,6 +79,7 @@ ansuz@box:~$ curl https://peers.fc00.io/1/location/newyork
     }
   ]
 }
+
 ```
 
 ## Contributing
