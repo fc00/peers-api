@@ -9,6 +9,8 @@ var markdownFiles = Fs.readdirSync(Path.resolve(markdownPath)).filter(function (
     return /\.md$/.test(name);
 });
 
+
+
 var template = Fs.readFileSync('./assets/template.html', 'utf-8');
 
 var swap = function (s, d) {
@@ -24,7 +26,7 @@ markdownFiles.forEach(function (name) {
 
     var built = swap(template, {
         content: Marked(content),
-        title: name.replace(/\.md$/, '').replace(/index/, 'home')
+        title: 'Peers.fc00::' + name.replace(/\.md$/, '').replace(/index/, 'home')
     });
 
     var target = Path.resolve(outputPath, name.replace(/\.md$/, '.html'));
