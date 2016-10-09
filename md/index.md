@@ -7,7 +7,7 @@ An API for finding nearby peers for the [Hyperboria network](https://hyperboria.
 Query the http server (in your browser or via the command line with `curl` or `wget`) using:
 
 * your two letter continent code
-  - EU, NA
+  - eu, na
 * your country's top level domain code
   - ca
   - us
@@ -28,7 +28,7 @@ Prefix your query with the API version (1) and the query type (currently, only l
 
 ```Bash
 # Find a peer in strasbourg, France, EU
-ansuz@box:~$ curl https://peers.fc00.io/1/location/EU/fr/strasbourg
+ansuz@box:~$ curl https://peers.fc00.io/1/location/eu/fr/strasbourg
 {
   "result": [
     {
