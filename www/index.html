@@ -1,3 +1,92 @@
 <!DOCTYPE html>
+<head>
+    <title>home</title>
+</head>
 <body>
-<h1>Peers API</h1>
+<h1 id="hyperboria-peers-api">Hyperboria Peers API</h1>
+<p>An API for finding nearby peers for the <a href="https://hyperboria.net/">Hyperboria network</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>Query the http server (in your browser or via the command line with <code>curl</code> or <code>wget</code>) using:</p>
+<ul>
+<li>your two letter continent code<ul>
+<li>EU, NA</li>
+</ul>
+</li>
+<li>your country&#39;s top level domain code<ul>
+<li>ca</li>
+<li>us</li>
+<li>fr</li>
+<li>uk</li>
+</ul>
+</li>
+<li>your region<ul>
+<li>california</li>
+<li>newyork</li>
+<li>ontario</li>
+</ul>
+</li>
+<li>city<ul>
+<li>london</li>
+<li>paris</li>
+</ul>
+</li>
+<li>some combination of all of these options.</li>
+</ul>
+<p>Prefix your query with the API version (1) and the query type (currently, only location is supported).</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="lang-Bash">
+# Find a peer in strasbourg, France, EU
+ansuz@box:~$ curl https://peers.fc00.io/1/location/EU/fr/strasbourg
+{
+  &quot;result&quot;: [
+    {
+      &quot;51.254.25.16:1132&quot;: {
+        &quot;contact&quot;: &quot;me@magik6k.net&quot;,
+        &quot;password&quot;: &quot;thah9aePha1Vusha6ovhpublic&quot;,
+        &quot;peerName&quot;: &quot;Magik6k-sbg1&quot;,
+        &quot;publicKey&quot;: &quot;kw0vfw3tmb6u6p21z5jmmymdlumwknlg3x8muk5mcw66tdpqlw30.k&quot;
+      }
+    }
+  ]
+}
+
+# Find a peer in new york
+ansuz@box:~$ curl https://peers.fc00.io/1/location/newyork
+{
+  &quot;result&quot;: [
+    {
+      &quot;107.170.57.34:63472&quot;: {
+        &quot;contact&quot;: &quot;code@ventricle.us&quot;,
+        &quot;gpg&quot;: &quot;7FE895160E3314027CD3B5D37392CF088BB4345C&quot;,
+        &quot;location&quot;: &quot;digitalocean nyc2&quot;,
+        &quot;login&quot;: &quot;public-peer&quot;,
+        &quot;password&quot;: &quot;ppm6j89mgvss7uvtntcd9scy6166mwb&quot;,
+        &quot;peerName&quot;: &quot;Jacob Henner&quot;,
+        &quot;publicKey&quot;: &quot;1xkf13m9r9h502yuffsq1cg13s5648bpxrtf2c3xcq1mlj893s90.k&quot;
+      },
+      &quot;[2604:a880:0:1010::f:4001]:63472&quot;: {
+        &quot;contact&quot;: &quot;code@ventricle.us&quot;,
+        &quot;gpg&quot;: &quot;7FE895160E3314027CD3B5D37392CF088BB4345C&quot;,
+        &quot;location&quot;: &quot;digitalocean nyc2&quot;,
+        &quot;login&quot;: &quot;public-peer&quot;,
+        &quot;password&quot;: &quot;ppm6j89mgvss7uvtntcd9scy6166mwb&quot;,
+        &quot;peerName&quot;: &quot;Jacob Henner&quot;,
+        &quot;publicKey&quot;: &quot;1xkf13m9r9h502yuffsq1cg13s5648bpxrtf2c3xcq1mlj893s90.k&quot;
+      }
+    },
+    {
+      &quot;192.241.171.154:62718&quot;: {
+        &quot;contact&quot;: &quot;hype@smash-net.org&quot;,
+        &quot;password&quot;: &quot;public_access&quot;,
+        &quot;publicKey&quot;: &quot;q5nhj9kg6ddmk571jb259mct2ljd10z9xvyf05y3hu66wk4qnk20.k&quot;,
+        &quot;user&quot;: &quot;weuxel&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+<h2 id="contributing">Contributing</h2>
+<p>If you would like to add a peer, see <a href="https://github.com/hyperboria/peers">Hyperboria&#39;s public peer repository</a>.</p>
+<p>If you would like the source to this API, it is available <a href="https://github.com/fc00/peers-api">here</a>.</p>
+<p>If you find a bug, please report it on <a href="https://github.com/fc00/peers-api/issues">the github issue tracker</a>.</p>
+
