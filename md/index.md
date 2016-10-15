@@ -2,6 +2,8 @@
 
 An API for finding nearby peers for the [Hyperboria network](https://hyperboria.net/).
 
+You'll need to install [cjdns](https://github.com/cjdelisle/cjdns) to connect.
+
 ## Usage
 
 Query the http server (in your browser or via the command line with `curl` or `wget`) using:
@@ -81,6 +83,27 @@ ansuz@box:~$ curl https://peers.fc00.io/1/location/newyork
 }
 
 ```
+
+## Using the peers you find
+
+Having already installed cjdns on your machine, and generated a configuration file, follow the instructions in the ["Connect your node to your friend's node" section of the README](https://github.com/cjdelisle/cjdns#3-connect-your-node-to-your-friends-node).
+
+This API may return peers which use IPv4, or IPv6 addresses.
+It's important that you add them to the correct section of your configuration file.
+You should find comments in the config file indicating which is which:
+
+```
+// Nodes to connect to (IPv4 only).
+"connectTo":
+                {
+```
+
+IPv4 and IPv6 addresses can be easily distinguised.
+
+An IPv4 is a series of four numbers separated by dots, like so: `123.456.78.90`.
+
+An IPv6 is a series of hexadecimal digits (0-9 and a-f), contained within square brackets, and separated by colons, like so: `[fe80::b606:f465:50ed:2bb]`
+
 
 ## Contributing
 
