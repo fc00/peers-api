@@ -65,28 +65,25 @@ module.exports = function (Config) {
 
         // if you get here, it's not the home route, and there's a valid version
         var handleVersion1 = function (args) {
-            if (typeof(args[0]) !== 'string') { return four04(req, res); }
             switch (args[0]) {
                 case 'version':
                     return send({
                         result: Peers.version,
                     });
+                case 'location':
+                    if (!args[1]) { break; }
+                    return send({
+                        result: Peers.filter(function (x, P) {
+                            var p = lowerArray(P);
+                            return !lowerArray(args.slice(1))
+                                .some(function (arg) {
+                                    return p.indexOf(arg.toLowerCase()) === -1;
+                                });
+                        })
+                    });
                 default:
+                    four04(req, res);
                     break;
-            }
-
-            if (args[1] && args[0] === 'location') {
-                return send({
-                    result: Peers.filter(function (x, P) {
-                        var p = lowerArray(P);
-                        return !lowerArray(args.slice(1))
-                            .some(function (arg) {
-                                return p.indexOf(arg.toLowerCase()) === -1;
-                            });
-                    })
-                });
-            } else {
-                four04(req, res);
             }
         };
 
