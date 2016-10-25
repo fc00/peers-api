@@ -30,6 +30,13 @@ var Static = Ecstatic({
     handleError: false
 });
 
+
+var testPeer = function (o, f) {
+    return Object.keys(o).some(function (k) {
+        return f(o[k]);
+    });
+};
+
 module.exports = function (Config) {
     return function (req, res) {
         var send = function (data) { asJSON(res, data); };
@@ -63,6 +70,7 @@ module.exports = function (Config) {
             }
         }
 
+
         // if you get here, it's not the home route, and there's a valid version
         var handleVersion1 = function (args) {
             switch (args[0]) {
@@ -80,6 +88,23 @@ module.exports = function (Config) {
                                     return p.indexOf(arg.toLowerCase()) === -1;
                                 });
                         })
+                    });
+                case 'peerName':
+                    if (!args[1]) {
+                        return send({
+                            result: Peers.filter(function (x) {
+                                return testPeer(x, function (peer) {
+                                    return peer.peerName;
+                                });
+                            }),
+                        });
+                    }
+                    return send({
+                        result: Peers.filter(function (x) {
+                            return testPeer(x, function (peer) {
+                                return peer.peerName === args[1];
+                            });
+                        }),
                     });
                 default:
                     four04(req, res);
