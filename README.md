@@ -22,4 +22,11 @@ node server;
 
 ## Usage (TBD)
 
-???
+```Bash
+# Find peers in North America
+curl https://peers.fc00.io/1/location/na
+```
+
+## See also
+
+[a dedicated client written in nodejs](https://github.com/fc00/peers-api-client)
