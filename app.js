@@ -37,6 +37,31 @@ var testPeer = function (o, f) {
     });
 };
 
+var matchLocation_1 = function (args) {
+    // case-insensitive match against user-provided locations
+    var lowered = lowerArray(args.slice(1));
+    if (!lowered.length) {
+        return Peers.map(function (x) { return x; });
+    }
+
+    // iterate over the list of peers, throwing away paths that don't match
+    return Peers.filter(function (x, P) {
+        // normalize location data, excluding file names
+        var p = lowerArray(P.slice(0, -1));
+        var l = p.length;
+        var last = -1;
+
+        var i = 0;
+        // iterate over the search terms...
+        for (;i < lowered.length;i++) {
+            // search terms must be strictly ordered
+            last = p.indexOf(lowered[i], last + 1)
+            if (last === -1) { return; }
+        }
+        return true;
+    });
+};
+
 module.exports = function (Config) {
     return function (req, res) {
         var send = function (data) { asJSON(res, data); };
@@ -79,15 +104,8 @@ module.exports = function (Config) {
                         result: Peers.version,
                     });
                 case 'location':
-                    if (!args[1]) { break; }
                     return send({
-                        result: Peers.filter(function (x, P) {
-                            var p = lowerArray(P);
-                            return !lowerArray(args.slice(1))
-                                .some(function (arg) {
-                                    return p.indexOf(arg.toLowerCase()) === -1;
-                                });
-                        })
+                        result: matchLocation_1(args),
                     });
                 case 'peerName':
                     if (!args[1]) {
